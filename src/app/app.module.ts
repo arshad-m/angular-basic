@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HighlighttextDirective } from './directives/highlighttext.directive';
 import { BasicService } from './services/basic.service';
+import { AngularPipeComponent } from './home/angular-pipe/angular-pipe.component';
+import { FilterListPipe } from './pipes/filter-list.pipe';
 
 @NgModule({
   // declaration option: used to define component in respective module
   declarations: [
     AppComponent,
     HomeComponent,
-    HighlighttextDirective
+    AngularPipeComponent,
+    FilterListPipe,
+    HighlighttextDirective,
   ],
   // import options : used to import other dependent module
   imports: [
