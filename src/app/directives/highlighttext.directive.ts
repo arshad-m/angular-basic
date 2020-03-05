@@ -3,7 +3,7 @@
 Example of attribute Directive
 */
 
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 /* Basically three types of directives
 1. component - directive with a template
@@ -13,10 +13,18 @@ import { Directive, ElementRef } from '@angular/core';
 @Directive({
   selector: '[appHighlighttext]'
 })
-export class HighlighttextDirective {
+export class HighlighttextDirective implements OnInit {
 
-  constructor(el: ElementRef) { 
-    el.nativeElement.style.color = 'red';
+  @Input('appHighlighttext') highlightColor: string; // highlightColor is an alias input will be taken as 'appHighlighttext'
+  @Input() defaultColor: string ;
+
+  constructor(private el: ElementRef) { 
+    // el.nativeElement.style.color = (this.highlightColor || this.defaultColor || 'red');
+    // will only work for the first time
+  }
+  
+  ngOnInit(){
+    this.el.nativeElement.style.color = (this.highlightColor || this.defaultColor || 'red');
   }
 
 }
